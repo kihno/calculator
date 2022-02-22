@@ -1,0 +1,21 @@
+#calContainer {
+    width: 30vw;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+#window{
+    border: 1px solid blue;
+    height: 50px;
+}
+
+#admin {
+    border: 1px solid red;
+}
+
+#numpad {
+    border: 1px solid green;
+    display: grid;
+    grid: repeat(4, 1fr) / repeat(4, 1fr);
+}
