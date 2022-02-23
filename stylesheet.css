@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 
-#window{
+#windowContainer{
     border: 1px solid blue;
     height: 50px;
 }
