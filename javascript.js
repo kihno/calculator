@@ -13,6 +13,7 @@ const screen = document.querySelector('#display');
 const result = document.querySelector('#result');
 
 //Buttons
+screen.textContent = 0;
 let num1;
 let num2;
 let operator;
@@ -29,11 +30,20 @@ number.forEach(item => {
 
 operators.forEach(item => {
     item.addEventListener('click', () => {
-        num1 = parseFloat(screen.textContent);
-        operator = item.value;
-        item.className += ' active';
-        previousKey = item;
-        dot.disabled = false;
+        if  (num1 !== undefined && previousKey !== equals) {
+            calculate();
+            num1 = answer;
+            operator = item.value;
+            item.className += ' active';
+            previousKey = item;
+            dot.disabled = false;
+        } else {
+            num1 = parseFloat(screen.textContent);
+            operator = item.value;
+            item.className += ' active';
+            previousKey = item;
+            dot.disabled = false;
+        }
     })
 });
 
@@ -49,6 +59,7 @@ clear.addEventListener('click', () => {
     operator = '';
     answer = '';
     previousKey = '';
+    removeClass();
 });
 
 backspace.addEventListener('click', () => {
@@ -57,16 +68,15 @@ backspace.addEventListener('click', () => {
 });
 
 equals.addEventListener('click', () => {
-    num2 = parseFloat(screen.textContent);
-    operate(operator, num1, num2);
-    screen.textContent = answer;
-    previousKey = '';
+    calculate();
+    num1 = screen.textContent;
+    previousKey = equals;
     dot.disabled = false;
 });
 
 //functions
 function display(item) {
-    if (screen.textContent === '' || previousKey.className === 'operator active' || previousKey === '') {
+    if (screen.textContent === '0' || previousKey.className === 'operator active' || previousKey === '') {
         screen.textContent = item.value;
     } else {
         screen.textContent += item.value;
@@ -77,6 +87,14 @@ function removeClass() {
     operators.forEach(item => {
         item.classList.remove('active');
     });
+}
+
+function calculate() {
+    num2 = parseFloat(screen.textContent);
+    operate(operator, num1, num2);
+    screen.textContent = answer;
+    previousKey = '';
+    dot.disabled = false;
 }
 
 function add(a, b) {

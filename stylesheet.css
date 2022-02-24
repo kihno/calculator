@@ -19,3 +19,7 @@
     display: grid;
     grid: repeat(4, 1fr) / repeat(4, 1fr);
 }
+
+.active {
+    background-color: grey;
+}
