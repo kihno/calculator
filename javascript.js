@@ -1,16 +1,7 @@
 // variables
 const number = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
-const one = document.querySelector('#one');
-const two = document.querySelector('#two');
-const three = document.querySelector('#three');
-const four = document.querySelector('#four');
-const five = document.querySelector('#five');
-const six = document.querySelector('#six');
-const seven = document.querySelector('#seven');
-const eight = document.querySelector('#eight');
-const nine = document.querySelector('#nine');
-const zero = document.querySelector('#one');
+const dot = document.querySelector('#dot');
 const equals = document.querySelector('#equals');
 const plus = document.querySelector('#plus');
 const minus = document.querySelector('#minus');
@@ -18,45 +9,76 @@ const multiply = document.querySelector('#multiply');
 const divide = document.querySelector('#divide');
 const clear = document.querySelector('#clear');
 const backspace = document.querySelector('#delete');
-const display = document.querySelector('#display');
+const screen = document.querySelector('#display');
 const result = document.querySelector('#result');
 
 //Buttons
-//display.textContent = '';
 let num1;
 let num2;
 let operator;
+let previousKey;
 let answer;
 
 number.forEach(item => {
     item.addEventListener('click', () => {
-        display.textContent = item.value;
+        display(item);
+        removeClass();
+        previousKey = item;
     })
 });
 
 operators.forEach(item => {
     item.addEventListener('click', () => {
-        num1 = display.textContent;
+        num1 = parseFloat(screen.textContent);
         operator = item.value;
+        item.className += ' active';
+        previousKey = item;
+        dot.disabled = false;
     })
-})
+});
+
+dot.addEventListener('click', () => {
+    dot.disabled = true;
+});
 
 clear.addEventListener('click', () => {
-    display.textContent = '';
+    screen.textContent = '';
+    result.textContent = '';
+    num1 = '';
+    num2 = '';
+    operator = '';
+    answer = '';
+    previousKey = '';
 });
 
 backspace.addEventListener('click', () => {
-    display.textContent = display.textContent.trim();
-    display.textContent = display.textContent.substr(0, display.textContent.length - 1);
+    //screen.textContent = display.textContent.trim();
+    screen.textContent = screen.textContent.slice(0, -1);
 });
 
 equals.addEventListener('click', () => {
-    num2 = display.textContent;
+    num2 = parseFloat(screen.textContent);
     operate(operator, num1, num2);
-    display.textContent = answer;
+    screen.textContent = answer;
+    previousKey = '';
+    dot.disabled = false;
 });
 
 //functions
+function display(item) {
+    if (screen.textContent === '' || previousKey.className === 'operator active' || previousKey === '') {
+        screen.textContent = item.value;
+    } else {
+        screen.textContent += item.value;
+    }
+}
+
+function removeClass() {
+    operators.forEach(item => {
+        item.classList.remove('active');
+    });
+}
+
 function add(a, b) {
     return a + b;
 }
@@ -78,9 +100,22 @@ function divided(a, b) {
 }
 
 function operate(operator, num1, num2) {
-    switch (operator) {
-        case 'plus':
-            answer = add(num1, num2);
-            break;
+    if (num2 === undefined) {
+        answer = num1;
+    } else {
+        switch (operator) {
+            case '+':
+                answer = add(num1, num2);
+                break;
+            case '-':
+                answer = subtract(num1, num2);
+                break;
+            case 'x':
+                answer = times(num1, num2);
+                break;
+            case '/':
+                answer = divided(num1, num2);
+                break;
+        }
     }
 }
