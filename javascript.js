@@ -6,6 +6,7 @@ const equals = document.querySelector('#equals');
 const clear = document.querySelector('#clear');
 const backspace = document.querySelector('#delete');
 const screen = document.querySelector('#display');
+const log = document.querySelector('#log');
 
 //Buttons
 screen.textContent = 0;
@@ -26,6 +27,7 @@ number.forEach(item => {
 operators.forEach(item => {
     item.addEventListener('click', () => {
         if  (num1 !== undefined && previousKey !== equals) {
+            log.textContent += item.value;
             calculate();
             num1 = answer;
             operator = item.value;
@@ -33,6 +35,7 @@ operators.forEach(item => {
             previousKey = item;
             dot.disabled = false;
         } else {
+            log.textContent += item.value;
             num1 = parseFloat(screen.textContent);
             operator = item.value;
             item.className += ' active';
@@ -47,17 +50,17 @@ dot.addEventListener('click', () => {
 });
 
 clear.addEventListener('click', () => {
-    screen.textContent = '';
-    num1 = '';
-    num2 = '';
-    operator = '';
-    answer = '';
-    previousKey = '';
+    log.textContent = '';
+    screen.textContent = 0;
+    num1 = undefined;
+    num2 = undefined;
+    operator = undefined;
+    previousKey = undefined;
+    answer = undefined;
     removeClass();
 });
 
 backspace.addEventListener('click', () => {
-    //screen.textContent = display.textContent.trim();
     screen.textContent = screen.textContent.slice(0, -1);
 });
 
@@ -68,13 +71,21 @@ equals.addEventListener('click', () => {
     dot.disabled = false;
 });
 
+window.addEventListener('keydown', (e) => {
+    let button = document.querySelector(`button[value='${e.key}']`);
+    if (!button) return;
+    button.click();
+});
+
 
 //functions
 function display(item) {
-    if (screen.textContent === '0' || previousKey.className === 'operator active' || previousKey === '') {
+    if (screen.textContent === '0' || screen.textContent === '' || previousKey.className === 'operator active' || previousKey === undefined) {
         screen.textContent = item.value;
+        log.textContent += item.value;
     } else {
         screen.textContent += item.value;
+        log.textContent += item.value;
     }
 }
 
@@ -120,7 +131,7 @@ function operate(operator, num1, num2) {
             case '-':
                 answer = subtract(num1, num2);
                 break;
-            case 'x':
+            case '*':
                 answer = times(num1, num2);
                 break;
             case '/':
