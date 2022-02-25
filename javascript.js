@@ -3,14 +3,9 @@ const number = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const dot = document.querySelector('#dot');
 const equals = document.querySelector('#equals');
-const plus = document.querySelector('#plus');
-const minus = document.querySelector('#minus');
-const multiply = document.querySelector('#multiply');
-const divide = document.querySelector('#divide');
 const clear = document.querySelector('#clear');
 const backspace = document.querySelector('#delete');
 const screen = document.querySelector('#display');
-const result = document.querySelector('#result');
 
 //Buttons
 screen.textContent = 0;
@@ -53,7 +48,6 @@ dot.addEventListener('click', () => {
 
 clear.addEventListener('click', () => {
     screen.textContent = '';
-    result.textContent = '';
     num1 = '';
     num2 = '';
     operator = '';
@@ -73,6 +67,7 @@ equals.addEventListener('click', () => {
     previousKey = equals;
     dot.disabled = false;
 });
+
 
 //functions
 function display(item) {
@@ -118,9 +113,6 @@ function divided(a, b) {
 }
 
 function operate(operator, num1, num2) {
-    if (num2 === undefined) {
-        answer = num1;
-    } else {
         switch (operator) {
             case '+':
                 answer = add(num1, num2);
@@ -135,5 +127,4 @@ function operate(operator, num1, num2) {
                 answer = divided(num1, num2);
                 break;
         }
-    }
 }
