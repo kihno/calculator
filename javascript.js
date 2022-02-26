@@ -21,7 +21,6 @@ number.forEach(item => {
         display(item);
         removeClass();
         previousKey = item;
-        
     })
 });
 
@@ -65,6 +64,7 @@ clear.addEventListener('click', () => {
 
 backspace.addEventListener('click', () => {
     screen.textContent = screen.textContent.slice(0, -1);
+    backspace.blur();
 });
 
 equals.addEventListener('click', () => {
@@ -72,6 +72,7 @@ equals.addEventListener('click', () => {
     num1 = screen.textContent;
     previousKey = equals;
     dot.disabled = false;
+    equals.blur();
 });
 
 window.addEventListener('keydown', (e) => {
