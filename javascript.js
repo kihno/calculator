@@ -21,6 +21,7 @@ number.forEach(item => {
         display(item);
         removeClass();
         previousKey = item;
+        
     })
 });
 
@@ -58,6 +59,8 @@ clear.addEventListener('click', () => {
     previousKey = undefined;
     answer = undefined;
     removeClass();
+    clear.blur();
+    backspace.blur();
 });
 
 backspace.addEventListener('click', () => {
