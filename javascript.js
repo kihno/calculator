@@ -87,6 +87,9 @@ function display(item) {
     if (screen.textContent === '0' || screen.textContent === '' || previousKey.className === 'operator active' || previousKey === undefined) {
         screen.textContent = item.value;
         log.textContent += item.value;
+    } else if (previousKey === equals) {
+        screen.textContent = item.value;
+        num1 = undefined;
     } else {
         screen.textContent += item.value;
         log.textContent += item.value;
