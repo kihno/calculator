@@ -1,4 +1,10 @@
-
+@font-face {
+    font-family: 'ds-digitalbold';
+    src: url('fonts/ds-digib-webfont.woff2') format('woff2'),
+         url('fonts/ds-digib-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
     display: flex;
@@ -10,26 +16,73 @@ body {
 #calContainer {
     width: 300px;
     height: 300px;
-    background: black;
+    background: #323338;
     display: flex;
     flex-direction: column;
     padding: 20px;
     border-radius: 10px;
+    gap: 10px;
 }
 
 #windowContainer{
-    border: 1px solid blue;
-    height: 50px;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(#aaae75, #a3ad88);
+    border-radius: 3px;
+    color: #282923;
+    text-align: right;
+    height: 100px;
+    font-family: 'ds-digitalbold', 'Courier New', Courier, monospace;
+}
+
+#log {
+    height: 1em;
+}
+
+#display {
+    font-size: 60px;
+    flex-grow: 3;
 }
 
 #admin {
-    border: 1px solid red;
+    display: flex;
+
+    grid-column: 1 / 4;
+    grid-row: 1;
+}
+
+button {
+    color: white;
+    border-radius: 10px;
+    font-family: arial;
+    font-weight: bold;
+}
+
+#admin, button {
+    flex-grow: 1;
+}
+
+#clear {
+    background-color: #ffb36e;
+}
+
+#delete {
+    background-color: #20a69b;
 }
 
 #numpad {
-    border: 1px solid green;
+    flex-grow: 2;
     display: grid;
-    grid: repeat(4, 1fr) / repeat(4, 1fr);
+    grid: repeat(5, 1fr) / repeat(4, 1fr);
+    gap: 4px;
+}
+
+.number, .blank {
+    background-color: #5d6164;
+}
+
+.operator, #equals {
+    background-color: #213e5d;
 }
 
 .active {
