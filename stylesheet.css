@@ -9,13 +9,17 @@
 body {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background-image: url('images/chalkboard.jpg');
+    background-size: cover;
 }
     
 #calContainer {
+    margin-top: 50px;
     width: 300px;
-    height: 300px;
+    height: 400px;
     background: #323338;
     display: flex;
     flex-direction: column;
@@ -28,7 +32,8 @@ body {
     display: flex;
     flex-direction: column;
     background-image: linear-gradient(#aaae75, #a3ad88);
-    border-radius: 3px;
+    border: 15px solid black;
+    border-radius: 5px;
     color: #282923;
     text-align: right;
     height: 100px;
@@ -36,19 +41,22 @@ body {
 }
 
 #log {
-    height: 1em;
+    height: 2em;
 }
 
 #display {
     font-size: 60px;
     flex-grow: 3;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 #admin {
     display: flex;
-
     grid-column: 1 / 4;
     grid-row: 1;
+    gap: 5px;
 }
 
 button {
@@ -56,6 +64,13 @@ button {
     border-radius: 10px;
     font-family: arial;
     font-weight: bold;
+    font-size: 1em;
+    border: none;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, .5), inset 0px 2px 1px 1px rgba(255, 255, 255, .3), inset 0px -2px 1px 1px rgba(0, 0, 0, .6);
+}
+
+button:active {
+    box-shadow: inset 0px 2px 1px 1px rgba(0, 0, 0, .6), inset 0px -2px 1px 1px rgba(255, 255, 255, .3);
 }
 
 #admin, button {
@@ -63,31 +78,59 @@ button {
 }
 
 #clear {
-    background-color: #ffb36e;
+    background-image: linear-gradient(top,#ffb36e, #ce8440);
+    background-image: -webkit-linear-gradient(top, #ffb36e, #ce8440);
+}
+
+#clear:hover {
+    background-image: linear-gradient(top,#ce8440, #ffb36e);
+    background-image: -webkit-linear-gradient(top, #ce8440, #ffb36e);
 }
 
 #delete {
-    background-color: #20a69b;
+    background-image: linear-gradient(top,#20a69b, #188178);
+    background-image: -webkit-linear-gradient(top, #20a69b, #188178);
+}
+
+#delete:hover {
+    background-image: linear-gradient(top,#188178, #20a69b);
+    background-image: -webkit-linear-gradient(top, #188178, #20a69b);
 }
 
 #numpad {
     flex-grow: 2;
     display: grid;
     grid: repeat(5, 1fr) / repeat(4, 1fr);
-    gap: 4px;
+    gap: 6px;
 }
 
 .number, .blank {
-    background-color: #5d6164;
+    background-image: linear-gradient(top, #5d6164, #45494b);
+    background-image: -webkit-linear-gradient(top, #5d6164, #45494b);
 }
 
-.operator, #equals {
-    background-color: #213e5d;
+.number:hover {
+    background-image: linear-gradient(top, #45494b, #5d6164);
+    background-image: -webkit-linear-gradient(top, #45494b, #5d6164);
 }
 
 .active {
-    background-color: grey;
+    background-image: linear-gradient(top, #193048, #213e5d);
+    background-image: -webkit-linear-gradient(top, #193048, #213e5d);
+    box-shadow: inset 0px 2px 1px 1px rgba(0, 0, 0, .6), inset 0px -2px 1px 1px rgba(255, 255, 255, .3);
 }
+
+.operator, #equals {
+    background-image: linear-gradient(top, #213e5d, #193048);
+    background-image: -webkit-linear-gradient(top, #213e5d, #193048);
+}
+
+.operator:hover, #equals:hover {
+    background-image: linear-gradient(top, #193048, #213e5d);
+    background-image: -webkit-linear-gradient(top, #193048, #213e5d);
+}
+
+
 footer {
     
     margin-top: auto;

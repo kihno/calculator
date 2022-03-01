@@ -19,13 +19,13 @@ let answer;
 number.forEach(item => {
     item.addEventListener('click', () => {
         display(item);
-        removeClass();
         previousKey = item;
     })
 });
 
 operators.forEach(item => {
     item.addEventListener('click', () => {
+        removeClass();
         if  (num1 !== undefined && previousKey !== equals) {
             log.textContent += item.value;
             calculate();
@@ -59,7 +59,6 @@ clear.addEventListener('click', () => {
     answer = undefined;
     removeClass();
     clear.blur();
-    backspace.blur();
 });
 
 backspace.addEventListener('click', () => {
@@ -68,17 +67,24 @@ backspace.addEventListener('click', () => {
 });
 
 equals.addEventListener('click', () => {
+    removeClass();
+    if (!num1) {
+        screen.textContent = 0;
+        equals.blur();
+    } else {
     calculate();
     num1 = screen.textContent;
     previousKey = equals;
     dot.disabled = false;
     equals.blur();
+    }
 });
 
 window.addEventListener('keydown', (e) => {
     let button = document.querySelector(`button[value='${e.key}']`);
     if (!button) return;
     button.click();
+    button.addClass('hover')
 });
 
 
