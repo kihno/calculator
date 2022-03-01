@@ -111,7 +111,7 @@ function removeClass() {
 function calculate() {
     num2 = parseFloat(screen.textContent);
     operate(operator, num1, num2);
-    screen.textContent = answer;
+    screen.textContent = round(answer, 4);
     previousKey = '';
     dot.disabled = false;
 }
@@ -152,3 +152,7 @@ function operate(operator, num1, num2) {
                 break;
         }
 }
+
+function round(value, decimals) {
+    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+  }

@@ -38,6 +38,7 @@ body {
     text-align: right;
     height: 100px;
     font-family: 'ds-digitalbold', 'Courier New', Courier, monospace;
+    overflow: auto;
 }
 
 #log {
@@ -45,11 +46,9 @@ body {
 }
 
 #display {
-    font-size: 60px;
+    font-size: 3em;
     flex-grow: 3;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    text-align: end;
 }
 
 #admin {
@@ -92,7 +91,7 @@ button:active {
     background-image: -webkit-linear-gradient(top, #20a69b, #188178);
 }
 
-#delete:hover {
+#delete:hover, {
     background-image: linear-gradient(top,#188178, #20a69b);
     background-image: -webkit-linear-gradient(top, #188178, #20a69b);
 }
