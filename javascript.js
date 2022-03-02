@@ -84,9 +84,14 @@ window.addEventListener('keydown', (e) => {
     let button = document.querySelector(`button[value='${e.key}']`);
     if (!button) return;
     button.click();
-    button.addClass('hover')
+    button.classList.add('click');
 });
 
+window.addEventListener('keyup', (e) => {
+    let button = document.querySelector(`button[value='${e.key}']`);
+    if (!button) return;
+    button.classList.remove('click');
+});
 
 //functions
 function display(item) {

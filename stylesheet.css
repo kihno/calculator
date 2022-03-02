@@ -68,7 +68,7 @@ button {
     box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, .5), inset 0px 2px 1px 1px rgba(255, 255, 255, .3), inset 0px -2px 1px 1px rgba(0, 0, 0, .6);
 }
 
-button:active {
+button:active, .click {
     box-shadow: inset 0px 2px 1px 1px rgba(0, 0, 0, .6), inset 0px -2px 1px 1px rgba(255, 255, 255, .3);
 }
 
@@ -91,7 +91,7 @@ button:active {
     background-image: -webkit-linear-gradient(top, #20a69b, #188178);
 }
 
-#delete:hover, {
+#delete:hover {
     background-image: linear-gradient(top,#188178, #20a69b);
     background-image: -webkit-linear-gradient(top, #188178, #20a69b);
 }
