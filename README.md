@@ -1,20 +1,26 @@
 # Calculator
 
+![](images/calculator.png)
+
+https://kihno.github.io/calculator/
+
+## Description
+
 A simple calculator app built with vanilla javascript.
 
 
 ## Built With
 
--HTML
--CSS
--Javascript
+- HTML
+- CSS
+- Javascript
 
 
 ## Features
 
--Perform simple add, subtract, multiply, divide calculations
--Running history of inputs displayed at top
--Support for mouse and keyboard inputs
+- Perform simple add, subtract, multiply, divide calculations
+- Running history of inputs displayed at top
+- Support for mouse and keyboard inputs
 
 ## Acknowledgements
 
